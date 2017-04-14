@@ -1,0 +1,18 @@
+body {
+	background: url("bg.jpg");
+	width : 90%;
+	margin: 0 auto;}
+#del, #back{
+	text-align: left;
+	color: red;
+	align: center;}
+#de,#ba {
+	width: 20em;  height: 2em;
+    color:  brown;
+    align = center;
+    text-align: center;}
+#deltab {
+	text-align: center;
+	margin: 0 auto;
+	width: 20%;}
+	

@@ -1,0 +1,38 @@
+body{
+	color: #ffffff;
+	width : 90%;
+	margin: 0 auto;
+	background:#413f3b url("hobs.jpg");}
+
+#nav {
+	background-color: brown;
+	padding: 9px;
+	margin: 1%;
+	text-align: center;
+	width: 93.5%;}
+li {
+	display: inline;
+	padding: 5px;}
+h1 {
+	color : yellow;
+	text-align: center;}
+#header {
+	text-align: center;}
+#pic {
+	float: left;
+	text-align: left;
+	padding: 5px;
+	margin-top: 20px;}
+#copy {
+	float: right;
+	text-align: center;
+	margin-top: 20px;
+	padding: 20px;
+	font-family: Arial;
+	font-size: 20px;}
+#head {
+	font-family: Papyrus, condensed;
+	font-size: 40px;}
+#list {
+	font-family: Adobe Garamond Pro;
+	font-size: 20px;} 

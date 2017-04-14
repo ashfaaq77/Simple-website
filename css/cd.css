@@ -1,0 +1,42 @@
+body {
+	background: url("bg.jpg");
+	width : 90%;
+	margin: 0 auto;}
+#head {
+	text-align : center;
+	font-family: Papyrus, condensed
+	font-size: 40px
+	color: Blue;}
+#nav {
+	background-color: brown;
+	padding: 9px;
+	margin: 1%;
+	text-align: center;
+	width: 93.5%;}
+li {
+	display: inline;
+	padding: 5px;}
+
+#button {
+		text-align: center;
+		padding: 9px;}
+#list {
+	font-family: Adobe Garamond Pro;
+	font-size: 20px;} 
+#head {
+	font-family: Papyrus, condensed;
+	font-size: 40px;
+	color : blue;}
+	
+#del,#ins,#mod {
+    width: 20em;  height: 2em;
+    color:  red;
+    align = center;}
+#ser {
+	text-align: center;
+	margin: 0 auto;
+	width: 30%;}
+#se {
+    color:  red;
+    align = center;}
+	
