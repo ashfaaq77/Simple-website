@@ -1,0 +1,193 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 24, 2016 at 02:26 AM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 7.0.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `g51dbi`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `artist`
+--
+
+CREATE TABLE `artist` (
+  `artID` int(11) NOT NULL,
+  `artName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `artist`
+--
+
+INSERT INTO `artist` (`artID`, `artName`) VALUES
+(6, 'Animal Collective'),
+(3, 'Deadmau5'),
+(7, 'Kings of Leon'),
+(4, 'Mark Ronson'),
+(5, 'Mark Ronson & The Business Intl'),
+(8, 'Maroon 5'),
+(2, 'Mr. Scruff'),
+(1, 'Muse');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cd`
+--
+
+CREATE TABLE `cd` (
+  `cdID` int(11) NOT NULL,
+  `cdTitle` varchar(255) NOT NULL,
+  `cdPrice` decimal(5,2) DEFAULT NULL,
+  `cdGenre` varchar(255) DEFAULT NULL,
+  `cdNumOfTracks` int(11) DEFAULT NULL,
+  `artID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cd`
+--
+
+INSERT INTO `cd` (`cdID`, `cdTitle`, `cdPrice`, `cdGenre`, `cdNumOfTracks`, `artID`) VALUES
+(1, 'Black Hole and Revelations', '9.99', 'Rock', 3, 1),
+(2, 'The Resistance', '11.99', 'Rock', 4, 1),
+(3, 'Ninja Tuna', '9.99', 'Electronica', 2, 2),
+(4, 'For Lack of a Better Name', '9.99', 'Electro House', 3, 3),
+(5, 'Version', '12.99', 'Pop', 2, 4),
+(6, 'Record Collection', '11.99', 'Alternative Rock', 1, 5),
+(7, 'Merriweather Post Pavillion', '12.99', 'Electronica', 6, 6),
+(8, 'Only By The Night', '9.99', 'Rock', 7, 7),
+(9, 'Come Around Sundown', '12.99', 'Rock', 4, 7),
+(10, 'Hands All Over', '11.99', 'Pop', 2, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `track`
+--
+
+CREATE TABLE `track` (
+  `trTitle` varchar(255) NOT NULL,
+  `trID` int(11) NOT NULL,
+  `trRuntime` int(11) DEFAULT NULL,
+  `cdID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `track`
+--
+
+INSERT INTO `track` (`trTitle`, `trID`, `trRuntime`, `cdID`) VALUES
+('Starlight', 2, 239, 1),
+('Supermassive Black Hole', 3, 209, 1),
+('Uprising', 5, 303, 2),
+('Resistance', 6, 346, 2),
+('Undisclosed Desire', 7, 236, 2),
+('Unnatural Selection', 8, 414, 2),
+('Test the Sound', 9, 100, 3),
+('Music Takes Me Up', 10, 327, 3),
+('FML', 11, 395, 4),
+('Moar Ghosts n Stuff', 12, 270, 4),
+('Hi Friend!', 13, 315, 4),
+('God Put a Sile upon Your Face', 14, 192, 5),
+('Oh My God', 15, 215, 5),
+('Bang Bang Bang', 16, 233, 6),
+('In the Flowers', 17, 322, 7),
+('My Firls', 18, 341, 7),
+('Also Frightened', 19, 314, 7),
+('Summertime Clothes', 20, 270, 7),
+('Daily Routine', 21, 346, 7),
+('Bluish', 22, 314, 7),
+('Closer', 23, 237, 8),
+('Crawl', 24, 246, 8),
+('Sex on Fire', 25, 203, 8),
+('Use Somebody', 26, 230, 8),
+('Manhattan', 27, 204, 8),
+('Revelry', 28, 201, 8),
+('17', 29, 185, 8),
+('The End', 30, 264, 9),
+('Radioactive', 31, 206, 9),
+('Pyro', 32, 250, 9),
+('Mary', 33, 205, 9),
+('Misery', 34, 216, 10),
+('Five a Little More', 35, 180, 10);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `artist`
+--
+ALTER TABLE `artist`
+  ADD PRIMARY KEY (`artID`),
+  ADD UNIQUE KEY `uc_artName` (`artName`);
+
+--
+-- Indexes for table `cd`
+--
+ALTER TABLE `cd`
+  ADD PRIMARY KEY (`cdID`),
+  ADD KEY `fk_art_id` (`artID`);
+
+--
+-- Indexes for table `track`
+--
+ALTER TABLE `track`
+  ADD PRIMARY KEY (`trID`),
+  ADD KEY `fk_tr_cd` (`cdID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `artist`
+--
+ALTER TABLE `artist`
+  MODIFY `artID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `cd`
+--
+ALTER TABLE `cd`
+  MODIFY `cdID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `track`
+--
+ALTER TABLE `track`
+  MODIFY `trID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `cd`
+--
+ALTER TABLE `cd`
+  ADD CONSTRAINT `fk_art_id` FOREIGN KEY (`artID`) REFERENCES `artist` (`artID`);
+
+--
+-- Constraints for table `track`
+--
+ALTER TABLE `track`
+  ADD CONSTRAINT `fk_tr_cd` FOREIGN KEY (`cdID`) REFERENCES `cd` (`cdID`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
